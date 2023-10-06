@@ -1,6 +1,6 @@
 // @ts-nocheck
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import * as Select from "@radix-ui/react-select";
 import { Button } from "@radix-ui/themes";
 import hljs from "highlight.js";
@@ -8,11 +8,29 @@ import domToImage from "dom-to-image";
 import styles from "./Editor.module.scss";
 import "@radix-ui/themes/styles.css";
 
+function adjustTextareaHeight(target) {
+  target.style.height = "auto"; // Reset height
+  target.style.height = `${target.scrollHeight}px`;
+}
+
 export default function Editor() {
   const [language, setLanguage] = useState("javascript");
-  const [code, setCode] = useState("");
+  const [code, setCode] = useState("const hello = 'world';");
+  const [textareaHeight, setTextareaHeight] = useState("22.5px");
 
   const highlightedCode = hljs.highlight(language, code).value;
+
+  useEffect(() => {
+    const textareaElement = document.querySelector(`.${styles.textarea}`);
+    if (textareaElement) {
+      adjustTextareaHeight(textareaElement);
+    }
+  }, [code]);
+  function handleTextareaChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
+    const target = event.target;
+    setCode(target.value);
+    adjustTextareaHeight(target);
+  }
 
   // Export
   const exportCard = (format: "png" | "svg" | "url") => {
@@ -99,15 +117,16 @@ export default function Editor() {
                 }}
               >
                 <textarea
-                  rows="10"
+                  rows="1"
                   cols="50"
                   value={code}
-                  onChange={(e) => setCode(e.target.value)}
                   className={styles.textarea}
                   autoCapitalize="off"
                   autoComplete="off"
                   autoCorrect="off"
                   spellCheck="false"
+                  style={{ height: textareaHeight }}
+                  onChange={handleTextareaChange}
                 />
                 <div
                   id="highlighted-code-div"
