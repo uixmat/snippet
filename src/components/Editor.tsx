@@ -34,6 +34,7 @@ export default function Editor() {
   const [language, setLanguage] = useState("javascript");
   const [code, setCode] = useState("const hello = 'world';");
   const [textareaHeight, setTextareaHeight] = useState("22.5px");
+  const [cardPadding, setCardPadding] = useState("32px");
 
   const highlightedCode = hljs.highlight(language, code).value;
 
@@ -112,6 +113,27 @@ export default function Editor() {
         </Select.Root>
 
         <Flex gap="2">
+          <Button
+            variant={cardPadding === "16px" ? "soft" : "outline"}
+            onClick={() => setCardPadding("16px")}
+          >
+            16px
+          </Button>
+          <Button
+            variant={cardPadding === "32px" ? "soft" : "outline"}
+            onClick={() => setCardPadding("32px")}
+          >
+            32px
+          </Button>
+          <Button
+            variant={cardPadding === "64px" ? "soft" : "outline"}
+            onClick={() => setCardPadding("64px")}
+          >
+            64px
+          </Button>
+        </Flex>
+
+        <Flex gap="2">
           <Button onClick={() => exportCard("png")}>Export</Button>
 
           <Popover.Root>
@@ -139,7 +161,7 @@ export default function Editor() {
 
       <div className={styles.cardWrapper}>
         <div className={styles.editor}>
-          <div className={styles.card}>
+          <div className={styles.card} style={{ padding: cardPadding }}>
             <div className={styles.ide}>
               <div
                 className={styles.textareaWrapper}

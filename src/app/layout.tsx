@@ -31,7 +31,7 @@ export default function RootLayout({
             radius="small"
           >
             {children}
-            <ThemePanel />
+            {/* <ThemePanel /> */}
           </Theme>
         </div>
       </body>
