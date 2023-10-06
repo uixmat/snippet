@@ -1,0 +1,16 @@
+.footer {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  padding: 1rem;
+  gap: 7px;
+  justify-content: center;
+  a {
+    color: var(--accent-9);
+    transition: all .18s ease;
+    text-decoration: none;
+    &:hover {
+      color: white;
+    }
+  }
+}
