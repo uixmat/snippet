@@ -1,19 +1,36 @@
 // @ts-nocheck
 "use client";
 import { useState, useEffect } from "react";
-import * as Select from "@radix-ui/react-select";
-import { Button } from "@radix-ui/themes";
+
+import { Button, Popover, Select, Flex } from "@radix-ui/themes";
+import { ChevronUpIcon, ImageIcon, Link2Icon } from "@radix-ui/react-icons";
+
 import hljs from "highlight.js";
 import domToImage from "dom-to-image";
+import { languages } from "@/lib/languages";
+
 import styles from "./Editor.module.scss";
-import "@radix-ui/themes/styles.css";
 
 function adjustTextareaHeight(target) {
   target.style.height = "auto"; // Reset height
   target.style.height = `${target.scrollHeight}px`;
 }
 
+function handleTabKey(event) {
+  if (event.key === "Tab") {
+    event.preventDefault();
+    const textarea = event.target;
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+
+    textarea.value =
+      textarea.value.substring(0, start) + "  " + textarea.value.substring(end);
+    textarea.selectionStart = textarea.selectionEnd = start + 2;
+  }
+}
+
 export default function Editor() {
+  const [exportType, setExportType] = useState("");
   const [language, setLanguage] = useState("javascript");
   const [code, setCode] = useState("const hello = 'world';");
   const [textareaHeight, setTextareaHeight] = useState("22.5px");
@@ -77,17 +94,47 @@ export default function Editor() {
   return (
     <>
       <div className={styles.controls}>
-        <Select.Root onValueChange={setLanguage} defaultValue="javascript">
-          <Select.Trigger variant="soft">Language: {language}</Select.Trigger>
-          <Select.Content variant="solid">
-            <Select.Item value="javascript">JavaScript</Select.Item>
-            <Select.Item value="css">SCSS</Select.Item>
+        <Select.Root
+          defaultValue="javascript"
+          onValueChange={(value) => setLanguage(value)}
+        >
+          <Select.Trigger />
+          <Select.Content>
+            <Select.Group>
+              <Select.Label>Language</Select.Label>
+              {languages.map((lang) => (
+                <Select.Item key={lang.value} value={lang.value}>
+                  {lang.label}
+                </Select.Item>
+              ))}
+            </Select.Group>
           </Select.Content>
         </Select.Root>
 
-        <Button onClick={() => exportCard("png")}>Export as PNG</Button>
-        <Button onClick={() => exportCard("svg")}>Export as SVG</Button>
-        <Button onClick={() => exportCard("url")}>Get SVG URL</Button>
+        <Flex gap="2">
+          <Button onClick={() => exportCard("png")}>Export</Button>
+
+          <Popover.Root>
+            <Popover.Trigger>
+              <Button variant="soft">
+                <ChevronUpIcon width="16" height="16" />
+              </Button>
+            </Popover.Trigger>
+            <Popover.Content>
+              <Flex direction="column" gap="3">
+                <Button onClick={() => exportCard("png")}>
+                  <ImageIcon /> Save PNG
+                </Button>
+                <Button onClick={() => exportCard("svg")}>
+                  <ImageIcon /> Save SVG
+                </Button>
+                <Button onClick={() => exportCard("url")}>
+                  <Link2Icon /> Base64 URL
+                </Button>
+              </Flex>
+            </Popover.Content>
+          </Popover.Root>
+        </Flex>
       </div>
 
       <div className={styles.cardWrapper}>
@@ -127,6 +174,8 @@ export default function Editor() {
                   spellCheck="false"
                   style={{ height: textareaHeight }}
                   onChange={handleTextareaChange}
+                  onKeyDown={handleTabKey}
+                  tabIndex={-1}
                 />
                 <div
                   id="highlighted-code-div"

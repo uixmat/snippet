@@ -1,6 +1,6 @@
 import "./globals.scss";
 import "@radix-ui/themes/styles.css";
-import { Theme } from "@radix-ui/themes";
+import { Theme, ThemePanel } from "@radix-ui/themes";
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 
@@ -24,8 +24,14 @@ export default function RootLayout({
     <html lang="en" className={jetbrains.variable}>
       <body>
         <div className="app">
-          <Theme appearance="dark" scaling="100%">
+          <Theme
+            appearance="dark"
+            scaling="100%"
+            accentColor="red"
+            radius="small"
+          >
             {children}
+            <ThemePanel />
           </Theme>
         </div>
       </body>
