@@ -21,10 +21,8 @@
 }
 
 .editor {
-  display: grid;
   width: 100%;
   max-width: 500px;
-  grid-template: 1fr/1fr;
 }
 
 .card {
@@ -48,6 +46,7 @@
   display: grid;
   width: 100%;
   grid-template: 1fr/1fr;
+  grid-template-rows: min-content;
 }
 .textarea, .highlighted {
   padding: 20px;
@@ -64,6 +63,7 @@
   -o-tab-size: 2;
   tab-size: 2;
   white-space: pre-wrap;
+  min-height: 22.5px;
 }
 
 .textarea {

@@ -104,6 +104,10 @@ export default function Editor() {
                   value={code}
                   onChange={(e) => setCode(e.target.value)}
                   className={styles.textarea}
+                  autoCapitalize="off"
+                  autoComplete="off"
+                  autoCorrect="off"
+                  spellCheck="false"
                 />
                 <div
                   id="highlighted-code-div"
