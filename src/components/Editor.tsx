@@ -18,10 +18,20 @@ export default function Editor() {
   const exportCard = (format: "png" | "svg" | "url") => {
     const cardElement = document.querySelector(`.${styles.card}`);
     if (!cardElement) return;
-
+    const scale = 2;
+    const config = {
+      style: {
+        transform: `scale(${scale})`,
+        transformOrigin: "top left",
+        width: `${cardElement.offsetWidth}px`,
+        height: `${cardElement.offsetHeight}px`,
+      },
+      width: cardElement.offsetWidth * scale,
+      height: cardElement.offsetHeight * scale,
+    };
     switch (format) {
       case "png":
-        domToImage.toPng(cardElement).then((dataUrl) => {
+        domToImage.toPng(cardElement, config).then((dataUrl) => {
           const link = document.createElement("a");
           link.download = "code_card.png";
           link.href = dataUrl;
@@ -29,7 +39,7 @@ export default function Editor() {
         });
         break;
       case "svg":
-        domToImage.toSvg(cardElement).then((dataUrl) => {
+        domToImage.toSvg(cardElement, config).then((dataUrl) => {
           const link = document.createElement("a");
           link.download = "code_card.svg";
           link.href = dataUrl;
@@ -37,7 +47,7 @@ export default function Editor() {
         });
         break;
       case "url":
-        domToImage.toSvg(cardElement).then((dataUrl) => {
+        domToImage.toSvg(cardElement, config).then((dataUrl) => {
           console.log(dataUrl);
         });
         break;
