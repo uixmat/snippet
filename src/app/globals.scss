@@ -1,0 +1,85 @@
+:root {
+  --background: #0d0d0d;
+  --panel-background: #191919;
+  --panel-border: 1px solid hsla(0,0%,100%,.2);
+  --panel-text-color: hsla(0,0%,100%,.4);
+  --panel-dropdown-border: hsla(0,0%,100%,.1);
+  --panel-padding-selected: #fff;
+  --frame-background: hsla(0,0%,100%,.75);
+  --frame-control-color: rgba(0,0,0,.2);
+  --frame-title-placeholder-color: rgba(0,0,0,.3);
+  --frame-title-color: rgba(0,0,0,.6);
+  --frame-shadow-border: rgba(0,0,0,.1);
+  --frame-highlight-border: hsla(0,0%,100%,.75);
+}
+
+body, html {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: Inter,sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: var(--background);
+  color: #fff;
+}
+
+* { box-sizing: border-box; }
+
+.app {
+  display: flex;
+  min-width: 100vw;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.hljs {
+  color: var(--syntax-text)
+}
+
+.hljs-subst,.hljs-tag {
+  color: var(--syntax-tag)
+}
+
+.hljs-bullet,.hljs-link,.hljs-literal,.hljs-number,.hljs-quote,.hljs-regexp {
+  color: var(--syntax-number)
+}
+
+.hljs-attr,.hljs-code,.hljs-section,.hljs-selector-class,.hljs-title {
+  color: var(--syntax-definition)
+}
+
+.hljs-strong {
+  font-weight: 700
+}
+
+.hljs-emphasis {
+  font-style: italic
+}
+
+.hljs-keyword,.hljs-name,.hljs-selector-tag {
+  color: var(--syntax-keyword)
+}
+
+.hljs-attribute,.hljs-property,.hljs-symbol {
+  color: var(--syntax-property)
+}
+
+.hljs-class .hljs-title,.hljs-params,.hljs-title.class_ {
+  color: var(--syntax-definition)
+}
+
+.hljs-addition,.hljs-built_in,.hljs-selector-attr,.hljs-selector-id,.hljs-selector-pseudo,.hljs-string {
+  color: var(--syntax-string)
+}
+
+.hljs-template-variable,.hljs-type,.hljs-variable {
+  color: var(--syntax-variable)
+}
+
+.hljs-comment,.hljs-deletion,.hljs-meta {
+  color: var(--syntax-comment)
+}
