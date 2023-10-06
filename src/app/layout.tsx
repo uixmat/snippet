@@ -3,6 +3,7 @@ import "@radix-ui/themes/styles.css";
 import { Theme, ThemePanel } from "@radix-ui/themes";
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
+import Footer from "@/components/Footer";
 
 export const jetbrains = JetBrains_Mono({
   weight: ["500"],
@@ -31,7 +32,7 @@ export default function RootLayout({
             radius="small"
           >
             {children}
-            {/* <ThemePanel /> */}
+            <Footer />
           </Theme>
         </div>
       </body>
