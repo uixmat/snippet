@@ -69,7 +69,7 @@ export default function Editor() {
       case "png":
         domToImage.toPng(cardElement, config).then((dataUrl) => {
           const link = document.createElement("a");
-          link.download = "code_card.png";
+          link.download = "snipit.png";
           link.href = dataUrl;
           link.click();
         });
@@ -77,7 +77,7 @@ export default function Editor() {
       case "svg":
         domToImage.toSvg(cardElement, config).then((dataUrl) => {
           const link = document.createElement("a");
-          link.download = "code_card.svg";
+          link.download = "snipit.svg";
           link.href = dataUrl;
           link.click();
         });
@@ -170,24 +170,23 @@ export default function Editor() {
                   "--syntax-text": "#FFFFFF",
                   "--syntax-background": "rgba(0, 0, 0, 0.75)",
                   "--syntax-string": "#6D86A4",
-                  "--syntax-comment": "#4A4C56",
-                  "--syntax-variable": "#51D0F8",
-                  "--syntax-variable-2": "#FFFFFF",
+                  "--syntax-comment": "#4f5572",
+                  "--syntax-variable": "#868ad3",
+                  "--syntax-variable-2": "#51D0F8",
                   "--syntax-variable-3": "#626B8B",
                   "--syntax-number": "#75D2B1",
                   "--syntax-atom": "#75D2B1",
-                  "--syntax-keyword": "#7DA9AB",
-                  "--syntax-property": "#9681C2",
+                  "--syntax-keyword": "#34ffc7",
+                  "--syntax-property": "#71828f",
                   "--syntax-definition": "#51D0F8",
                   "--syntax-meta": "#F2F7F7",
                   "--syntax-operator": "#7DA9AB",
-                  "--syntax-attribute": "#51D0F8",
+                  "--syntax-attribute": "#868ad3",
                   "--syntax-tag": "#7DA9AB",
                 }}
               >
                 <textarea
                   rows="1"
-                  cols="50"
                   value={code}
                   className={styles.textarea}
                   autoCapitalize="off"

@@ -3,7 +3,6 @@ import "@radix-ui/themes/styles.css";
 import { Theme, ThemePanel } from "@radix-ui/themes";
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
-import Footer from "@/components/Footer";
 
 export const jetbrains = JetBrains_Mono({
   weight: ["500"],
@@ -12,7 +11,7 @@ export const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ray.so Copy",
+  title: "Code Snippit",
   description: "Share beautiful code snippets",
 };
 
@@ -28,11 +27,11 @@ export default function RootLayout({
           <Theme
             appearance="dark"
             scaling="100%"
-            accentColor="red"
+            accentColor="iris"
             radius="small"
           >
             {children}
-            <Footer />
+            {/* <ThemePanel /> */}
           </Theme>
         </div>
       </body>
