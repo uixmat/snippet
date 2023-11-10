@@ -2,6 +2,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import EditorControls from "./EditorControls";
+import clsx from "clsx";
 import hljs from "highlight.js";
 import domToImage from "dom-to-image";
 
@@ -28,6 +29,7 @@ function handleTabKey(event) {
 export default function Editor() {
   const [exportType, setExportType] = useState("");
   const [language, setLanguage] = useState("javascript");
+  const [theme, setTheme] = useState("winter");
   const [code, setCode] = useState("const hello = 'world';");
   const [textareaHeight, setTextareaHeight] = useState("22.5px");
   const [cardPadding, setCardPadding] = useState("32px");
@@ -88,9 +90,12 @@ export default function Editor() {
     }
   };
 
+  const themeClass = clsx(styles.card, styles[theme]);
+
   return (
     <>
       <EditorControls
+        setTheme={setTheme}
         setLanguage={setLanguage}
         setCardPadding={setCardPadding}
         exportCard={exportCard}
@@ -99,7 +104,7 @@ export default function Editor() {
 
       <div className={styles.cardWrapper}>
         <div className={styles.editor}>
-          <div className={styles.card} style={{ padding: cardPadding }}>
+          <div className={themeClass} style={{ padding: cardPadding }}>
             <div className={styles.ide}>
               <div
                 className={styles.textareaWrapper}

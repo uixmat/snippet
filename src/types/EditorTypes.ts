@@ -3,4 +3,5 @@ export interface EditorControls {
   setCardPadding: (padding: string) => void;
   exportCard: (format: 'png' | 'svg' | 'url') => void;
   cardPadding: string;
+  setTheme: (theme: string) => void;
 }

@@ -1,6 +1,7 @@
 import { Button, Popover, Select, Flex } from "@radix-ui/themes";
 import { ChevronUpIcon, ImageIcon, Link2Icon } from "@radix-ui/react-icons";
 import { languages } from "@/lib/languages";
+import { themes } from "@/lib/themes";
 import { EditorControls } from "@/types/EditorTypes";
 import styles from "./EditorControls.module.scss";
 
@@ -9,6 +10,7 @@ export default function EditorControls({
   setCardPadding,
   exportCard,
   cardPadding,
+  setTheme,
 }: EditorControls) {
   return (
     <div className={styles.controls}>
@@ -26,7 +28,21 @@ export default function EditorControls({
         </Select.Content>
       </Select.Root>
 
-      <Flex gap="2">
+      <Select.Root defaultValue="cyan" onValueChange={setTheme}>
+        <Select.Trigger />
+        <Select.Content>
+          <Select.Group>
+            <Select.Label>Theme</Select.Label>
+            {themes.map((theme) => (
+              <Select.Item key={theme.value} value={theme.value}>
+                {theme.label}
+              </Select.Item>
+            ))}
+          </Select.Group>
+        </Select.Content>
+      </Select.Root>
+
+      <Flex gap="1">
         <Button
           variant={cardPadding === "16px" ? "soft" : "outline"}
           onClick={() => setCardPadding("16px")}
