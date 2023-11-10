@@ -11,8 +11,9 @@ export const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Code Snippit",
-  description: "Share beautiful code snippets",
+  title: "Snippets | Share beautiful code snippets",
+  description:
+    "Use Snippets.fyi to share beautiful code snippets for social media.",
 };
 
 export default function RootLayout({

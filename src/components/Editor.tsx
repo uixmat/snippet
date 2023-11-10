@@ -68,7 +68,7 @@ export default function Editor() {
       case "png":
         domToImage.toPng(cardElement, config).then((dataUrl) => {
           const link = document.createElement("a");
-          link.download = "snipit.png";
+          link.download = "snippet.png";
           link.href = dataUrl;
           link.click();
         });
@@ -76,7 +76,7 @@ export default function Editor() {
       case "svg":
         domToImage.toSvg(cardElement, config).then((dataUrl) => {
           const link = document.createElement("a");
-          link.download = "snipit.svg";
+          link.download = "snippet.svg";
           link.href = dataUrl;
           link.click();
         });
