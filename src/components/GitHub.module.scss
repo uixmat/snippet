@@ -1,12 +1,16 @@
-.footer {
-  display: flex;
+.github {
+  display: inline-flex;
   align-items: center;
   font-size: 14px;
   padding: 1rem;
   gap: 7px;
   justify-content: center;
-  margin-top: auto;
+  margin-bottom: auto;
   a {
+    display: inline-flex;
+    gap: 7px;
+    justify-content: center;
+    align-items: center;
     transition: all .18s ease;
     text-decoration: none;
     &:hover {
