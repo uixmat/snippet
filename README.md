@@ -22,4 +22,4 @@ yarn install
 yarn dev
 ```
 
-> This porject is open-source and you're welcome to clone and use in your own projects. It is maintained intermittently.
+> This project is open-source and you're welcome to clone and use in your own projects. It is maintained intermittently.
