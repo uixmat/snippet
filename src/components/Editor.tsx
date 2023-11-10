@@ -77,6 +77,13 @@ export default function Editor() {
           link.download = "snippet.png";
           link.href = dataUrl;
           link.click();
+          toast.success("Generated PNG", {
+            className: "toast",
+            unstyled: true,
+            cancel: {
+              label: "Close",
+            },
+          });
         });
         break;
       case "svg":
@@ -85,6 +92,13 @@ export default function Editor() {
           link.download = "snippet.svg";
           link.href = dataUrl;
           link.click();
+          toast.success("Generated SVG", {
+            className: "toast",
+            unstyled: true,
+            cancel: {
+              label: "Close",
+            },
+          });
         });
         break;
       case "url":
