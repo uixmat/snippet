@@ -37,6 +37,13 @@ body {
   justify-content: center;
 }
 
+// Radix
+.rt-SelectTriggerInner span {
+  display: inline-flex;
+  align-items: center;
+}
+
+// Code Theme
 .hljs {
   color: var(--syntax-text)
 }

@@ -30,10 +30,15 @@ function handleTabKey(event) {
 export default function Editor() {
   const [exportType, setExportType] = useState("");
   const [language, setLanguage] = useState("javascript");
-  const [theme, setTheme] = useState("cyan");
-  const [code, setCode] = useState("const hello = 'world';");
+  const [theme, setTheme] = useState("purple");
+  const [code, setCode] = useState(`function Snippet() {
+  const snippet = 'https://snippet.fyi';
+  return (
+    <li>Snippet URL: {snippet}</li>
+  );
+}`);
   const [textareaHeight, setTextareaHeight] = useState("22.5px");
-  const [cardPadding, setCardPadding] = useState("32px");
+  const [cardPadding, setCardPadding] = useState("64px");
 
   const highlightedCode = hljs.highlight(language, code).value;
 

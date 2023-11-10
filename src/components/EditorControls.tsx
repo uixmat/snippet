@@ -3,6 +3,7 @@ import { ChevronUpIcon, ImageIcon, Link2Icon } from "@radix-ui/react-icons";
 import { languages } from "@/lib/languages";
 import { themes } from "@/lib/themes";
 import { EditorControls } from "@/types/EditorTypes";
+import clsx from "clsx";
 import styles from "./EditorControls.module.scss";
 
 export default function EditorControls({
@@ -28,16 +29,27 @@ export default function EditorControls({
         </Select.Content>
       </Select.Root>
 
-      <Select.Root defaultValue="cyan" onValueChange={setTheme}>
+      <Select.Root defaultValue="purple" onValueChange={setTheme}>
         <Select.Trigger />
         <Select.Content>
           <Select.Group>
             <Select.Label>Theme</Select.Label>
-            {themes.map((theme) => (
-              <Select.Item key={theme.value} value={theme.value}>
-                {theme.label}
-              </Select.Item>
-            ))}
+            {themes.map((theme) => {
+              const labelClass = clsx(styles.label, {
+                [styles.cyan]: theme.value === "cyan",
+                [styles.purple]: theme.value === "purple",
+                [styles.orange]: theme.value === "orange",
+                [styles.green]: theme.value === "green",
+              });
+              return (
+                <Select.Item key={theme.value} value={theme.value}>
+                  <div className={styles.labelWrap}>
+                    <span className={labelClass} data-name={theme.label} />
+                    {theme.label}
+                  </div>
+                </Select.Item>
+              );
+            })}
           </Select.Group>
         </Select.Content>
       </Select.Root>

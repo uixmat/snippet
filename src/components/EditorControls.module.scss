@@ -13,3 +13,27 @@
   gap: 16px;
   transform: translateX(-50%);
 }
+
+.labelWrap {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+span.label {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  &.cyan {
+    background-image: linear-gradient(to right bottom, #00D6BD 0%, #150636 100%);
+  }
+  &.purple {
+    background-image: linear-gradient(to right bottom, #7300D6 0%, #150636 100%);
+  }
+  &.orange {
+    background-image: linear-gradient(to right bottom, #D6C600 0%, #A00C00 100%);
+  }
+  &.green {
+    background-image: linear-gradient(to right bottom, #D6D600 0%, #198321 100%);
+  }
+}
