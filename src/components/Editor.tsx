@@ -6,6 +6,7 @@ import clsx from "clsx";
 import hljs from "highlight.js";
 import domToImage from "dom-to-image";
 import { themes } from "@/lib/themes";
+import { toast } from "sonner";
 
 import styles from "./Editor.module.scss";
 
@@ -88,6 +89,13 @@ export default function Editor() {
         break;
       case "url":
         domToImage.toSvg(cardElement, config).then((dataUrl) => {
+          toast.success("Open console to see data URL!", {
+            className: "toast",
+            unstyled: true,
+            cancel: {
+              label: "Close",
+            },
+          });
           console.log(dataUrl);
         });
         break;

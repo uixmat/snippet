@@ -3,6 +3,7 @@ import "@radix-ui/themes/styles.css";
 import { Theme, ThemePanel } from "@radix-ui/themes";
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
+import { Toaster } from "sonner";
 
 export const jetbrains = JetBrains_Mono({
   weight: ["500"],
@@ -25,6 +26,7 @@ export default function RootLayout({
     <html lang="en" className={jetbrains.variable}>
       <body>
         <div className="app">
+          <Toaster position="bottom-center" />
           <Theme
             appearance="dark"
             scaling="100%"

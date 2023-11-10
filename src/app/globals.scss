@@ -37,6 +37,24 @@ body {
   justify-content: center;
 }
 
+// Sonner 
+.toast {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 10px;
+  background: rgba(#121415, .36);
+  backdrop-filter: blur(10px);
+  border: 1px solid lighten(#121415, 10%);
+  color: white ;
+  font-size: 14px;
+  button[data-cancel] {
+    color: white !important;
+    background: rgba(255,255,255,.05);
+  }
+}
+
 // Radix
 .rt-SelectTriggerInner span {
   display: inline-flex;
