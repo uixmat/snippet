@@ -5,6 +5,7 @@ import EditorControls from "./EditorControls";
 import clsx from "clsx";
 import hljs from "highlight.js";
 import domToImage from "dom-to-image";
+import { themes } from "@/lib/themes";
 
 import styles from "./Editor.module.scss";
 
@@ -29,7 +30,7 @@ function handleTabKey(event) {
 export default function Editor() {
   const [exportType, setExportType] = useState("");
   const [language, setLanguage] = useState("javascript");
-  const [theme, setTheme] = useState("winter");
+  const [theme, setTheme] = useState("cyan");
   const [code, setCode] = useState("const hello = 'world';");
   const [textareaHeight, setTextareaHeight] = useState("22.5px");
   const [cardPadding, setCardPadding] = useState("32px");
@@ -92,6 +93,13 @@ export default function Editor() {
 
   const themeClass = clsx(styles.card, styles[theme]);
 
+  const selectedThemeStyles =
+    themes.find((t) => t.value === theme)?.styles || {};
+  const themeStyles = {
+    ...selectedThemeStyles,
+    padding: cardPadding,
+  };
+
   return (
     <>
       <EditorControls
@@ -104,30 +112,9 @@ export default function Editor() {
 
       <div className={styles.cardWrapper}>
         <div className={styles.editor}>
-          <div className={themeClass} style={{ padding: cardPadding }}>
+          <div className={themeClass} style={themeStyles}>
             <div className={styles.ide}>
-              <div
-                className={styles.textareaWrapper}
-                style={{
-                  "--editor-padding": "16px 16px 21px 16px",
-                  "--syntax-text": "#FFFFFF",
-                  "--syntax-background": "rgba(0, 0, 0, 0.75)",
-                  "--syntax-string": "#6D86A4",
-                  "--syntax-comment": "#4f5572",
-                  "--syntax-variable": "#868ad3",
-                  "--syntax-variable-2": "#51D0F8",
-                  "--syntax-variable-3": "#626B8B",
-                  "--syntax-number": "#75D2B1",
-                  "--syntax-atom": "#75D2B1",
-                  "--syntax-keyword": "#34ffc7",
-                  "--syntax-property": "#71828f",
-                  "--syntax-definition": "#51D0F8",
-                  "--syntax-meta": "#F2F7F7",
-                  "--syntax-operator": "#7DA9AB",
-                  "--syntax-attribute": "#868ad3",
-                  "--syntax-tag": "#7DA9AB",
-                }}
-              >
+              <div className={styles.textareaWrapper}>
                 <textarea
                   rows="1"
                   value={code}
